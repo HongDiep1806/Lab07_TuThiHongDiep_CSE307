@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script>
+       function validate(event) {
+        let form = document.forms['registration'];
+        let allValid = true;
+
+        let fullname = form.elements['fullname'];
+        let email = form.elements['email'];
+        let password = form.elements['password'];
+        let confirmPW = form.elements['confirmPW'];
+
+        let fullnameError = document.getElementById('validFullname');
+        let emailError = document.getElementById('validEmail');
+        let passwordError = document.getElementById('validPassword');
+        let confirmPWError = document.getElementById('validCPassword');
+
+        if (fullname.value === '') {
+            allValid = false;
+            fullnameError.textContent = 'Please enter your Fullname';
+        } else {
+            fullnameError.textContent = '';
+        }
+
+        if (email.value === '') {
+            allValid = false;
+            emailError.textContent = 'Please enter your Email';
+        } else {
+            emailError.textContent = '';
+        }
+
+        if (password.value === '') {
+            allValid = false;
+            passwordError.textContent = 'Please enter your Password';
+        } else if (password.value.length < 6) {
+            allValid = false;
+            passwordError.textContent = 'Password must be at least 6 characters long';
+        } else {
+            passwordError.textContent = '';
+        }
+
+        if (confirmPW.value === '') {
+            allValid = false;
+            confirmPWError.textContent = 'Please confirm your Password';
+        } else if (confirmPW.value !== password.value) {
+            allValid = false;
+            confirmPWError.textContent = 'Passwords do not match';
+        } else {
+            confirmPWError.textContent = '';
+        }
+
+        if (!allValid) {
+                event.preventDefault();
+            }
+    }
+
+    </script>
+    <style>
+        .valid {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form class="registration" name="registration" onsubmit="validate(event)">
+        <table border="1">
+            <colgroup>
+                <col>
+                <col>
+            </colgroup>
+
+            <tr>
+                <th>Fullname*</th>
+                <td class="fullname"><input placeholder="Enter your name" type="text" id="fullname" maxlength="300">
+                    <p id="validFullname" class="valid"></p>
+                </td>
+            </tr>
+            <tr>
+                <th>Email*</th>
+                <td class="email"><input placeholder="Enter your email" type="text" id="email" maxlength="100">
+                    <p id="validEmail" class="valid"></p>
+                </td>
+            </tr>
+            <tr>
+                <th>Pasword*</th>
+                <td class="password"> <input placeholder="Enter password" type="password" id="password" minlength="8">
+                    <p id="validPassword" class="valid"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Confirm Password*</th>
+                <td class="confirmPW"><input placeholder="Enter password again" type="password" id="confirmPW"
+                        minlength="8">
+                        <p id="validCPassword" class="valid"></p>
+                    </td>
+
+            </tr>
+
+            <tr>
+                <th>Phone number*</th>
+                <td class="phoneNumber"><input placeholder="Enter your phone number" type="text" id="phoneNumber"
+                        maxlength="100">
+
+            </tr>
+
+            <tr>
+                <th>Address</th>
+                <td><textarea placeholder="Enter your address"></textarea></td>
+
+            </tr>
+
+            <tr>
+                <th>City</th>
+                <td><input placeholder="Enter your City" type="text" name="fullname" value="" maxlength="100"> <label
+                        for="sn"><b>State</b></label>
+                    <input placeholder="Enter your State" type="text" name="fullname" value="" maxlength="100">
+                </td>
+
+
+            </tr>
+
+            <tr>
+                <th>Zip\Postal Code</th>
+                <td><input placeholder="Enter the zip code" type="text" name="fullname" value="" maxlength="100">
+
+            </tr>
+
+            <tr>
+                <th>Country</th>
+                <td><select name="country" id="1234">
+                        <option value="Select your country">[Select your country]</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Italy">Italy</option>
+                    </select></td>
+
+
+            </tr>
+
+            <tr>
+                <th>Birthday :</th>
+                <td>
+                    <form action="/action_page.php">
+                        <input type="date" id="birthday" name="birthday">
+                    </form>
+                </td>
+
+            </tr>
+
+            <tr>
+                <th>Gender</th>
+                <td><select name="Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select></td>
+            </tr>
+
+            <tr>
+                <th>Starting date</th>
+                <td><input class="radio" type="radio" value="Spring">Spring <span> <input class="radio" type="radio"
+                            value="Spring">Summer</span>
+                </td>
+
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td><textarea placeholder="Please send us more information" type="text" cols="40" rows="3"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <center><input type="submit"></center>
+                </td>
+            </tr>
+        </table>
+    </form>
+   
+
+</body>
+
+</html>

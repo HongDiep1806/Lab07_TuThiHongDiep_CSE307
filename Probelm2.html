@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelector() Method
+    </title>
+</head>
+
+<body>
+    <div id="myDIV">
+        <p class="example">This is the first paragraph with class "exampple"</p>
+        <p class="">This is another paragraph</p>
+        <a href="#" target="attribute">Link with target attribute</a>
+    </div>
+
+    <button onclick="changeAll()">Change</button>
+    <style>
+        .example {
+            background-color: rgb(159, 225, 233);
+            color: green;
+        }
+    </style>
+    <script>
+        function changeAll() {
+            var firstLinkWithTarget = document.querySelector('a[target]');
+            firstLinkWithTarget.style.border = '2px solid red';
+
+            var firstParagraph = document.querySelector('.example');
+            firstParagraph.style.fontSize = '24px';
+            firstParagraph.style.backgroundColor = 'yellow';
+            firstParagraph.style.color = 'purple';
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User management</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<script>
+    async function Getdata() {
+        var url = 'https://fakestoreapi.com/users';
+        var data;
+        await fetch(url)
+            .then((res) => res.json())
+            .then((json) => data = json);
+        console.log(data);
+        RenderItem(data);
+    }
+
+    function RenderItem(data) {
+        var table = document.createElement("table");
+        var tableHeader = document.createElement("tr");
+        tableHeader.innerHTML = `
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Suite</th>
+            `;
+        table.appendChild(tableHeader);
+
+        data.forEach(user => {
+            var row = document.createElement("tr");
+            row.innerHTML = `
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td><input type="password" value="${user.password}" disabled></td>                    <td>${user.address.city}</td>
+                    <td>${user.address.street}</td>
+                    <td>${user.address.suite}</td>
+                `;
+            table.appendChild(row);
+        });
+
+        document.body.appendChild(table);
+    }
+</script>
+
+
+<body>
+    <script>
+        Getdata();
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</body>
+
+</html>

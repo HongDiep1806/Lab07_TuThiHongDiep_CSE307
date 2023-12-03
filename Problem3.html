@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>querySelectorAll() Method
+    </title>
+</head>
+
+<body>
+    <div>
+        <p class="example">This is the first paragraph with class "example".</p>
+        <p class="example">Another paragraph with class "example".</p>
+        <p>This is a regular paragraph.</p>
+        <p><a href="#" target="attribute">Link with target attribute</a></p>
+        <p><a href="#" target="attribute">Another link with target attribute</a></p>
+        <h1>Title</h1>
+        <h2>Title</h2>
+        <button onclick="change()">Change</button>
+
+    </div>
+    <style>
+        .example {
+            background-color: rgb(150, 196, 234);
+            border: 3px solid;
+            padding: 10px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            color: purple;
+        }
+
+        h2 {
+            color: purple;
+            ;
+        }
+    </style>
+    <script>
+        function change() {
+            var firstP = document.querySelector('.example');
+            firstP.style.backgroundColor = 'yellow';
+
+            var bothP = document.querySelectorAll('.example');
+            bothP.forEach(function(p) {
+                p.style.borderColor = 'green';
+            });
+
+            var bothLink = document.querySelectorAll('a[target]');
+            bothLink.forEach(function(link) {
+                link.style.border = '2px solid red';
+                link.style.textDecoration = 'none';
+            });
+
+            var h1Title = document.querySelector('h1');
+            var h2Title = document.querySelector('h2');
+           
+            h1Title.style.color = 'orange';
+            h2Title.style.color = 'orange';
+
+        }
+
+    </script>
+</body>
+
+</html>
